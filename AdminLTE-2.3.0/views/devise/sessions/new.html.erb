@@ -1,0 +1,59 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="<%= root_url %>"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group has-feedback">
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+        <span class="fa fa-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+        <span class="fa fa-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <% if devise_mapping.rememberable? -%>
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <%= f.check_box :remember_me %> Remember Me
+            </label>
+          </div>
+        </div>
+        <% end -%>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <%= f.submit "Sign In", class: 'btn btn-primary btn-block btn-flat' %>
+        </div>
+        <!-- /.col -->
+      </div>
+    <% end %>
+
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+    </div>
+    <!-- /.social-auth-links -->
+
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<script>
+    $("input[type='checkbox'], input[type='radio']").iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+</script>

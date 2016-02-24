@@ -1,0 +1,43 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="<%= root_url %>"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Forgot your password?</p>
+
+
+    <% if !devise_error_messages!.empty? %>
+        <div class="alert alert-danger">
+          <%= devise_error_messages! %>
+        </div>
+    <% end %>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="form-group has-feedback">
+          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+          <span class="fa fa-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.submit "Send me reset password instructions", class: 'btn btn-primary btn-block btn-flat' %>
+          </div>
+          <!-- /.col -->
+        </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<script>
+    $("input[type='checkbox'], input[type='radio']").iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+</script>
